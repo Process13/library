@@ -1,4 +1,5 @@
-import java.util.Locale;
+package main.library;
+
 import java.util.Scanner;
 
 public class Main {
@@ -27,11 +28,11 @@ public class Main {
     }
 
     private static void showMenu() {
-        System.out.println("1. Add a Book\n2. Show all books");
+        System.out.println("1. Add a library.arv.Book\n2. Show all books");
     }
 
     private static void addBook() {
-        System.out.println("Book title: ");
+        System.out.println("library.arv.Book title: ");
         String title = scanner.nextLine().trim();
 
         System.out.println("Author: ");

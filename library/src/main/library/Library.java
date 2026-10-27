@@ -1,3 +1,5 @@
+package main.library;
+
 public class Library {
     private String name;
     private Book[] books = new Book[100];
