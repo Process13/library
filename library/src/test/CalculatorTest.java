@@ -1,6 +1,6 @@
 package test;
 import org.junit.jupiter.api.*;
-import main.tst.Calculator;
+import main.unittest.calculator.Calculator;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {

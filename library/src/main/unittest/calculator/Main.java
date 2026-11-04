@@ -1,4 +1,4 @@
-package main.tst;
+package main.unittest.calculator;
 
 public class Main {
     static void main(String[] args) {
