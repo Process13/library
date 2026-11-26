@@ -42,20 +42,28 @@ public class ClientHandler implements Runnable {
                     }
                     out.println("END");
                 } else if (command.equalsIgnoreCase("BORROW")) {
-                    boolean success = library.borrow(parts[1], name);
-                    out.println(success ? "Okej utlånat" : "Fel. Boken är inte inne eller saknas.");
-                } else if (command.equalsIgnoreCase("STATUS")) {
-                    Media media = library.getMediaById(parts[1]);
-                    if (media == null) {
-                        out.println("ERROR okänt ID");
+                    if (parts.length < 2) {
+                        out.println("Du måste ange medians ID efter BORROW Eg.(Borrow 5)");
                     } else {
-                        out.println("OK " + media);
+                        boolean success = library.borrow(parts[1], name);
+                        out.println(success ? "Okej utlånat" : "Fel. Boken är inte inne eller saknas.");
+                    }
+                } else if (command.equalsIgnoreCase("STATUS")) {
+                    if (parts.length < 2) {
+                        out.println("Du måste ange medians ID efter STATUS Eg.(Borrow 5)");
+                    } else {
+                        Media media = library.getMediaById(parts[1]);
+                        if (media == null) {
+                            out.println("ERROR okänt ID");
+                        } else {
+                            out.println("OK " + media);
+                        }
                     }
                 } else {
                     out.println("Error, okänt kommando");
                 }
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Error" + e.getMessage());
         }
     }

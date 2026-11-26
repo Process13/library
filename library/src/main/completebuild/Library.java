@@ -53,7 +53,9 @@ public class Library {
         return true;
     }
 
-    public Media[] getSorted() {
-        return null;
+    public List<Media> getSorted() {
+        List<Media> sorted = new ArrayList<>(mediaList);
+        Collections.sort(sorted);
+        return sorted;
     }
 }
