@@ -28,6 +28,7 @@ public abstract class Media implements Borrowable, Comparable<Media>{
     protected Status getStatus() {
         return status;
     }
+
     @Override
     public boolean isAvailable() {
         return status == Status.AVAILABLE;

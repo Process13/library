@@ -1,29 +1,32 @@
 package main.completebuild;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 public class Library {
-    private List<Book> books = new ArrayList<>();
-    private Map<String, Book> booksById = new HashMap<>();
+    private static final Logger LOGGER = Logger.getLogger(Library.class.getName());
+
+    private List<Media> mediaList = new ArrayList<>();
+    private Map<String, Media> mediaById = new HashMap<>();
     private List<Loan> loanHistory = new ArrayList<>();
 
-    public boolean addBook(Book book) {
-        if (booksById.containsKey(book.getId())) {
+    public boolean addMedia(Media media) {
+        if (mediaById.containsKey(media.getId())) {
             return false;
         }
-        books.add(book);
-        booksById.put(book.getId(), book);
+        mediaList.add(media);
+        mediaById.put(media.getId(), media);
         return true;
     }
 
-    public Book getBookById(String id) {
-        return booksById.get(id);
+    public Media getMediaById(String id) {
+        return mediaById.get(id);
     }
 
-    public List<Book> getSorgtedBooks() {
-        List<Book> sortedBooks = new ArrayList<>();
-        Collections.sort(sortedBooks);
-        return sortedBooks;
+    public List<Media> getSorgtedMedia() {
+        List<Media> sortedMedia = new ArrayList<>();
+        Collections.sort(sortedMedia);
+        return sortedMedia;
     }
 
     public Set<String> getBorrowers() {
@@ -35,15 +38,22 @@ public class Library {
     }
 
     public boolean borrow(String id, String borrower) {
-        Book book = booksById.get(id);
-        if (book == null) {
+        Media media = mediaById.get(id);
+        if (media == null) {
+            LOGGER.info("Media not found");
             return false;
         }
-        if (!book.borrow()) {
+        if (!media.borrow()) {
+            LOGGER.info("Media already borrowed");
             return false;
         }
-        Loan loan = new Loan(book, borrower);
+        LOGGER.info(borrower + " lånade " + media.getTitle());
+        Loan loan = new Loan(media, borrower);
         loanHistory.add(loan);
         return true;
+    }
+
+    public Media[] getSorted() {
+        return null;
     }
 }

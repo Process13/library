@@ -4,7 +4,7 @@ public class Book extends Media{
 
     private String author;
 
-    public Book(String id, String title, int year, String author) {
+    public Book(String id, String title, String author, int year) {
         super(id, title, year);
         this.author = author;
     }
@@ -17,21 +17,6 @@ public class Book extends Media{
     public int loanDays(){
         return 28;
     }
-
-    public boolean isAvailable() {
-        return status == Status.AVAILABLE;
-    }
-
-    public boolean borrow(){
-
-        if (status !=  Status.AVAILABLE) {
-            return false;
-        }
-        status = Status.BORROWED;
-
-        return true;
-    }
-
 
     @Override
     public String toString(){

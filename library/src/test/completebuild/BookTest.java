@@ -13,7 +13,7 @@ public class BookTest {
     @Test
     void borrowBookShouldMakeBookUnavailable(){
         // Arrange
-        Book book = new Book(1, "Pippi långstrump", "Astrid Lindgren", 1945);
+        Book book = new Book("1", "Pippi långstrump", "Astrid Lindgren", 1945);
 
         // Act
         boolean success = book.borrow();

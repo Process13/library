@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 public class Loan {
 
-    private Book book;
+    private Media media;
     private String borrower;
     private LocalDate borrowedOn;
     private LocalDate dueDate;
 
 
-    public Loan(Book book, String borrower) {
-        this.book = book;
+    public Loan(Media media, String borrower) {
+        this.media = media;
         this.borrower = borrower;
         this.borrowedOn = LocalDate.now();
         this.dueDate = borrowedOn.plusDays(28);
@@ -37,7 +37,7 @@ public class Loan {
 
     @Override
     public String toString(){
-        return book.getTitle() + " lånades av " + borrower + " åter senast " + dueDate;
+        return media.getTitle() + " lånades av " + borrower + " åter senast " + dueDate;
     }
 
 
